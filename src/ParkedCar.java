@@ -1,10 +1,10 @@
 public class ParkedCar {
 
-    private String make = "";
-    private String model = "";
-    private String color = "";
-    private String licensePlate = "";
-    private int parkingMinutes = 0;
+    private String make;
+    private String model;
+    private String color;
+    private String licensePlate;
+    private ParkingMeter parkingMinutes;
 
     public ParkedCar(String make, String model, String color, String licensePlate, int parkingMinutes) {
 
@@ -12,7 +12,7 @@ public class ParkedCar {
         this.model = model;
         this.color = color;
         this.licensePlate = licensePlate;
-        this.parkingMinutes = parkingMinutes;
+        this.parkingMinutes = new ParkingMeter(parkingMinutes);
 
     }
 
@@ -33,6 +33,6 @@ public class ParkedCar {
     }
 
     public int getParkingMinutes() {
-        return parkingMinutes;
+        return parkingMinutes.getParkingTime();
     }
 }
