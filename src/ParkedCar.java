@@ -35,4 +35,29 @@ public class ParkedCar {
     public int getParkingMinutes() {
         return parkingMinutes.getParkingTime();
     }
+
+    public void setMake(String make)
+    {
+        this.make = make;
+    }
+
+    public void setModel(String model)
+    {
+        this.model = model;
+    }
+
+    public void setColor(String color)
+    {
+        this.color = color;
+    }
+
+    public void setLicensePlate(String licensePlate)
+    {
+        this.licensePlate = licensePlate;
+    }
+
+    public void setParkingMinutes(int parkingMinutes)
+    {
+        this.parkingMinutes = new ParkingMeter(parkingMinutes);
+    }
 }
