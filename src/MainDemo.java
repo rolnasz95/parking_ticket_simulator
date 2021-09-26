@@ -4,11 +4,10 @@ public class MainDemo {
 
     public static void main(String[] args) {
 
-        int passedTime = getPassedTime();
-        int carPassedTime = getCarTime();
+        Scanner keyboard = new Scanner(System.in);
 
-        ParkingMeter timePassed = new ParkingMeter( passedTime );
-        ParkedCar car = new ParkedCar("Toyota", "Camry", "White", "8FHK658", carPassedTime );
+        ParkingMeter timePassed = new ParkingMeter( getPassedTime(keyboard) );
+        ParkedCar car = new ParkedCar("Toyota", "Camry", "White", "8FHK658", getCarTime(keyboard) );
         PoliceOfficer officer = new PoliceOfficer("Mr. T", "6736771");
 
         boolean checkFine = officer.checkParking(car, timePassed);
@@ -27,22 +26,24 @@ public class MainDemo {
         {
             System.out.println("Car is within time limit. No fines were issued!");
         }
+
+        keyboard.close();
+
+        System.exit(0);
     }
 
-    public static int getPassedTime()
+    public static int getPassedTime(Scanner input)
     {
-        System.out.print("Enter amount of minutes passed since ticket purchase: ");
-        Scanner keyboard = new Scanner(System.in);
-        int time = keyboard.nextInt();
+        System.out.print("Enter time passed in minutes since ticket purchase: ");
+        int time = input.nextInt();
 
         return time;
     }
 
-    public static int getCarTime()
+    public static int getCarTime(Scanner input)
     {
-        System.out.print("Enter amount of minutes the car has purchased: ");
-        Scanner keyboard = new Scanner(System.in);
-        int time = keyboard.nextInt();
+        System.out.print("Enter time in minutes the car has purchased: ");
+        int time = input.nextInt();
 
         return time;
     }
