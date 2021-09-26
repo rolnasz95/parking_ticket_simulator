@@ -1,5 +1,9 @@
+import java.lang.Math;
+
 public class ParkingTicket {
 
+     // initialFine = 25 dollar fine is issued for overtime parking
+     // hourlyFine = 10 dollar is added to the total fine for every started hour of overtime parking
     final private static int initialFine = 25;
     final private static int hourlyFine = 10;
 
@@ -7,11 +11,20 @@ public class ParkingTicket {
 
     }
 
+    /**
+     * @param boughtMinutes = the amount of parking minutes a car has purchased
+     * @param passedMinutes = the amount of total minutes that passed since ticket purchase
+     * @return total fine amount
+     */
     public int calculateFine(ParkedCar boughtMinutes, ParkingMeter passedMinutes)
     {
+        // Minimum fine is 25 dollars
         int fine = initialFine;
 
-        double additionalFine = ((boughtMinutes.getParkingMinutes() - passedMinutes.getParkingTime()) / 60) * hourlyFine;
+        // 10 dollars will be added to the total fine for each started hour (e.g. 2 hours and 10 minutes
+        // will add 3 hours of extra fine to the total
+        double additionalFine =
+                Math.ceil((passedMinutes.getParkingTime() - boughtMinutes.getParkingMinutes()) / 60.0) * hourlyFine;
 
         fine += additionalFine;
 

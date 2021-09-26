@@ -19,7 +19,7 @@ public class PoliceOfficer {
     public boolean checkParking(ParkedCar car, ParkingMeter time) {
         boolean expired = false;
 
-        if (car.getParkingMinutes() > time.getParkingTime())
+        if (car.getParkingMinutes() < time.getParkingTime())
         {
             expired = true;
         }
